@@ -3,7 +3,7 @@ class QuoteModal {
   String? quote;
   String? author;
   String? category;
-  bool? favrouite = false;
+  bool favrouite = false;
 
   QuoteModal(
     this.quote,
