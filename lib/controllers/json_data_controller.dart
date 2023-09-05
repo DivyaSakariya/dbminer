@@ -4,14 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pr_7_db_miner/modals/quote_modal.dart';
 
-class ApiController extends GetxController {
-  // late RxList allQuotes = [].obs;
-  //
-  // fetchApiQuotes() async {
-  //   allQuotes = (await ApiHelper.apiHelper.getApiQuotes()) as RxList;
-  // }
-
+class JsonDataController extends GetxController {
   List allQuotesData = [];
+  RxList allFavorite = [].obs;
+  bool isFavorite = false;
+
 
   Future<void> loadData() async {
     String jsonData = await rootBundle.loadString('assets/json/quotes.json');
@@ -19,8 +16,17 @@ class ApiController extends GetxController {
     allQuotesData = allData.map((e) => QuoteModal.fromMap(data: e)).toList();
   }
 
-  checkIsFavrouite({required int index}) {
-    allQuotesData[index].favrouite = !allQuotesData[index].favrouite;
+  checkFavorite() {
+    isFavorite = !isFavorite;
     update();
   }
+
+  onFavoriteTapped({required QuoteModal data}) {
+    allFavorite.add(data);
+  }
+
+  delete({required int index}) {
+    allFavorite.removeAt(index);
+  }
+
 }

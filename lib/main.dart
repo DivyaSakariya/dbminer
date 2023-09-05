@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pr_7_db_miner/views/screens/favorite_page.dart';
 import 'package:pr_7_db_miner/views/screens/home_page.dart';
 import 'package:pr_7_db_miner/views/screens/splash_screen.dart';
 
-import 'controllers/api_controller.dart';
+import 'controllers/json_data_controller.dart';
 import 'helpers/db_helper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   DBHelper.dbHelper.init();
-  ApiController apiController = Get.put(ApiController());
-  apiController.loadData();
+  JsonDataController jsonDataController = Get.put(JsonDataController());
+  jsonDataController.loadData();
 
   runApp(
     const MyApp(),
@@ -44,9 +45,13 @@ class MyApp extends StatelessWidget {
           name: '/splash_screen',
           page: () => const SplashScreen(),
         ),
+        // GetPage(
+        //   name: '/detail_page',
+        //   page: () => const SplashScreen(),
+        // ),
         GetPage(
-          name: '/detail_page',
-          page: () => const SplashScreen(),
+          name: '/favorite_page',
+          page: () => FavoritePage(),
         ),
       ],
     );

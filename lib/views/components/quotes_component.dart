@@ -90,11 +90,11 @@ class QuotesComponent extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                     top: 20,
                     right: 18,
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(
                           Icons.more_vert,
                           color: Colors.white,

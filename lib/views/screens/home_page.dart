@@ -52,7 +52,9 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed('/favorite_page');
+            },
             icon: const Icon(Icons.favorite_border_rounded),
           ),
         ],

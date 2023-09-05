@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:pr_7_db_miner/controllers/api_controller.dart';
+import 'package:pr_7_db_miner/controllers/json_data_controller.dart';
 import 'package:pr_7_db_miner/controllers/db_quote_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pr_7_db_miner/modals/quote_modal.dart';
@@ -12,16 +12,16 @@ class HomeComponent extends StatelessWidget {
   HomeComponent({super.key});
 
   DBQuoteController dbQuoteController = Get.put(DBQuoteController());
-  ApiController apiController = Get.put(ApiController());
+  JsonDataController jsonDataController = Get.put(JsonDataController());
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: ListView.builder(
-        itemCount: apiController.allQuotesData.length,
+        itemCount: jsonDataController.allQuotesData.length,
         itemBuilder: (context, index) {
-          QuoteModal quoteModal = apiController.allQuotesData[index];
+          QuoteModal quoteModal = jsonDataController.allQuotesData[index];
           Color c1 = color1[index % 10];
           Color c2 = color2[index % 10];
 
@@ -30,6 +30,7 @@ class HomeComponent extends StatelessWidget {
             height: 180,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
+
               gradient: LinearGradient(
                 colors: [
                   c1,
@@ -77,14 +78,13 @@ class HomeComponent extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        apiController.checkIsFavrouite(index: index);
+                        jsonDataController.onFavoriteTapped(data: quoteModal);
+                        jsonDataController.checkFavorite();
                         Get.snackbar(
                             'Successfully Added', '${quoteModal.quote}');
                       },
                       icon: Icon(
-                        apiController.allQuotesData[index].favrouite
-                            ? Icons.favorite_rounded
-                            : Icons.favorite_border_rounded,
+                        jsonDataController.isFavorite ? Icons.favorite : Icons.favorite_border,
                         color: Colors.white,
                       ),
                     ),

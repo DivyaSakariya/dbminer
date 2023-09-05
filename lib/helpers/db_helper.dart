@@ -16,7 +16,6 @@ class DBHelper {
   String qId = "id";
   String qQuote = "quote";
   String qAuthor = "author";
-  String qCategory = "category";
 
   init() async {
     log("DB Initializing");
@@ -34,7 +33,7 @@ class DBHelper {
 
         db
             .execute(
-                'CREATE TABLE IF NOT EXISTS $tableQuotes($qId INTEGER PRIMARY KEY AUTOINCREMENT, $qQuote TEXT, $qAuthor TEXT, $qCategory TEXT)')
+                'CREATE TABLE IF NOT EXISTS $tableQuotes($qId INTEGER PRIMARY KEY AUTOINCREMENT, $qQuote TEXT, $qAuthor TEXT)')
             .then((value) {
           log("Table created...");
         }).onError((error, stackTrace) {
@@ -48,12 +47,11 @@ class DBHelper {
 
   Future<int> insertQuote({required QuoteModal quoteModal}) async {
     String query =
-        'INSERT INTO $tableQuotes($qQuote, $qAuthor, $qCategory) VALUES(?, ?, ?)';
+        'INSERT INTO $tableQuotes($qQuote, $qAuthor) VALUES(?, ?)';
 
     List args = [
       quoteModal.quote,
       quoteModal.author,
-      quoteModal.category,
     ];
 
     return await database.rawInsert(query, args);
