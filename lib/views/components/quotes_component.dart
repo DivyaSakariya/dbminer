@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:pr_7_db_miner/controllers/quotes_controller.dart';
 
+import '../../controllers/quotes_controller.dart';
 import '../../utils/constant.dart';
 import '../../utils/quotes.dart';
 
@@ -90,17 +90,17 @@ class QuotesComponent extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
-                    top: 20,
-                    right: 18,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.more_vert,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
+                Positioned(
+                  top: 20,
+                  right: 18,
+                  child: Row(
+                    children: const [
+                      Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             )

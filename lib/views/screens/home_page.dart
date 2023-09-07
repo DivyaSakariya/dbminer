@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pr_7_db_miner/controllers/home_controller.dart';
-import 'package:pr_7_db_miner/controllers/quotes_controller.dart';
-import 'package:pr_7_db_miner/views/components/home_component.dart';
-import 'package:pr_7_db_miner/views/components/menu_component.dart';
-import 'package:pr_7_db_miner/views/components/quotes_component.dart';
-import 'package:pr_7_db_miner/views/components/search_component.dart';
+import 'package:pr_7_db_miner/views/components/library_component.dart';
+
+import '../../controllers/home_controller.dart';
+import '../../controllers/quotes_controller.dart';
+import '../components/home_component.dart';
+import '../components/menu_component.dart';
+import '../components/quotes_component.dart';
+import '../components/search_component.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
           HomeComponent(),
           QuotesComponent(),
           SearchComponent(),
-          MenuComponent(),
+          LibraryComponent(),
         ],
       ),
       bottomNavigationBar: Obx(() {
@@ -95,12 +97,18 @@ class HomePage extends StatelessWidget {
               label: 'Search',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.menu_rounded),
-              label: 'Menu',
+              icon: Icon(Icons.library_books_outlined),
+              label: 'Library',
             ),
           ],
         );
       }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed("/add_quotes_page");
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

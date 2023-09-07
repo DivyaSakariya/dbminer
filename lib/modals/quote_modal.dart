@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class QuoteModal {
   late int id;
   String? quote;
@@ -7,6 +9,10 @@ class QuoteModal {
     this.quote,
     this.author,
   );
+
+  QuoteModal.init() {
+    log("Quote Modal Initialized...");
+  }
 
   factory QuoteModal.fromMap({required Map data}) {
     return QuoteModal(

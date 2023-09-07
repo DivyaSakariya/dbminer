@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pr_7_db_miner/views/screens/add_quotes_page.dart';
 import 'package:pr_7_db_miner/views/screens/favorite_page.dart';
 import 'package:pr_7_db_miner/views/screens/home_page.dart';
 import 'package:pr_7_db_miner/views/screens/splash_screen.dart';
@@ -45,13 +46,13 @@ class MyApp extends StatelessWidget {
           name: '/splash_screen',
           page: () => const SplashScreen(),
         ),
-        // GetPage(
-        //   name: '/detail_page',
-        //   page: () => const SplashScreen(),
-        // ),
         GetPage(
           name: '/favorite_page',
           page: () => FavoritePage(),
+        ),
+        GetPage(
+          name: '/add_quotes_page',
+          page: () => AddQuotesPage(),
         ),
       ],
     );

@@ -1,8 +1,11 @@
 import 'dart:developer';
 
+import 'package:get/get.dart';
 import 'package:path/path.dart';
-import 'package:pr_7_db_miner/modals/quote_modal.dart';
+import 'package:pr_7_db_miner/controllers/json_data_controller.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../modals/quote_modal.dart';
 
 class DBHelper {
   DBHelper._();
@@ -17,11 +20,13 @@ class DBHelper {
   String qQuote = "quote";
   String qAuthor = "author";
 
+  JsonDataController jsonDataController = Get.put(JsonDataController());
+
   init() async {
     log("DB Initializing");
 
     String dbPath = await getDatabasesPath();
-    String dbFileName = "quoteDB1.db";
+    String dbFileName = "quote1.db";
 
     String path = join(dbPath, dbFileName);
 
@@ -46,8 +51,7 @@ class DBHelper {
   }
 
   Future<int> insertQuote({required QuoteModal quoteModal}) async {
-    String query =
-        'INSERT INTO $tableQuotes($qQuote, $qAuthor) VALUES(?, ?)';
+    String query = 'INSERT INTO $tableQuotes($qQuote, $qAuthor) VALUES(?, ?)';
 
     List args = [
       quoteModal.quote,
@@ -69,7 +73,7 @@ class DBHelper {
   }
 
   Future<int> deleteQuote({required int id}) async {
-    String query = 'DELETE FROM $tableQuotes WHERE Id = $id';
+    String query = 'DELETE FROM $tableQuotes WHERE id = $id';
 
     return await database.rawDelete(query);
   }

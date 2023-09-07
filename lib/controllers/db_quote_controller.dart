@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
-import 'package:pr_7_db_miner/helpers/db_helper.dart';
+import 'package:pr_7_db_miner/modals/quote_modal.dart';
+
+import '../helpers/db_helper.dart';
 
 class DBQuoteController extends GetxController {
   final RxList _allQuotes = [].obs;
@@ -10,5 +12,20 @@ class DBQuoteController extends GetxController {
 
   RxList get fetchQuote {
     return _allQuotes;
+  }
+
+  Future<int> insertQuote({required QuoteModal quoteModal}) {
+    return DBHelper.dbHelper.insertQuote(quoteModal: quoteModal);
+  }
+
+  Future<int> deleteQuote({required int id}) async {
+    getAllQuotes();
+
+    if (_allQuotes.any((element) => element.id == id)) {
+      return await DBHelper.dbHelper.deleteQuote(id: id);
+    } else {
+      Get.snackbar("ERROR !!", "$id does not exist...");
+      return 0;
+    }
   }
 }
