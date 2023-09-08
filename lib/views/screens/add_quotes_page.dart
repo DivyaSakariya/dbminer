@@ -16,7 +16,7 @@ class AddQuotesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Transaction"),
+        title: const Text("Add Quote"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -95,7 +95,7 @@ class AddQuotesPage extends StatelessWidget {
                           int id = await dbQuoteController.insertQuotes(
                               quoteModal: quoteModal);
 
-                          Get.snackbar("Successfully Transaction Added !!",
+                          Get.snackbar("Successfully Quote Added !!",
                               "Category: ${quoteModal.quote}");
 
                           dbQuoteController.getAllQuotes();
