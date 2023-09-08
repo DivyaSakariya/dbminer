@@ -1,3 +1,5 @@
+# pr_7_DB_Miner
+
 **Project Definition:** Quotes (DB Miner)
 
 **Project Description:**
@@ -70,3 +72,27 @@ JSON parsing.
 - User satisfaction with the application’s functionality and UI/UX
 - Quality of code and project structure
 - Presentation quality and clarity of communication
+
+
+### Video:
+
+
+https://github.com/DivyaSakariya/dbminer/assets/113959976/8e8b852e-e5c6-4e51-bcbf-b6e1b0f90689
+
+
+### ScreebShots:
+
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/66c0ad65-af83-40a0-93c5-4ef38576d920" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/753bec46-963f-4af7-b6a8-3fc285bbf82d" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/f1b36832-d8e6-4305-a86c-6e73871aeb84" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/79084716-69c7-45e0-ad40-ab09ea578c2e" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/d0d92189-db09-4361-9dca-94bf6dd42455" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/ae048bb7-b32d-4356-97a8-47cc45104a53" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/704c3b73-d019-43aa-8b23-5ca227fe920c" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/13ac3e61-cf08-4722-be83-8408ae7a9e9b" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/6b24b4c3-6aed-4813-9401-acbf9ee822b7" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/6554bf5e-e3a8-4326-9652-964cae6ae5d0" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/7510bdb1-2975-40a9-8684-af2d1a09198a" width = "250"></img>
+<img src = "https://github.com/DivyaSakariya/dbminer/assets/113959976/1afb0062-476d-42b8-b5b5-2fd10a1b02b3" width = "250"></img>
+
+<img src = "" width = "250"></img>
