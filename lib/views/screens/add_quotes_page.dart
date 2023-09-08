@@ -40,6 +40,12 @@ class AddQuotesPage extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: "Quote",
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Enter Quote Name First...';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 14,
@@ -57,6 +63,12 @@ class AddQuotesPage extends StatelessWidget {
                       border: OutlineInputBorder(),
                       hintText: "Author",
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Enter Author Name First...';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(
                     height: 50,
@@ -66,6 +78,8 @@ class AddQuotesPage extends StatelessWidget {
                     children: [
                       OutlinedButton(
                         onPressed: () async {
+                          quoteModal.id = 0;
+
                           quoteController.clear();
                           authorController.clear();
 
@@ -75,12 +89,10 @@ class AddQuotesPage extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () async {
-                          quoteModal.id = 0;
-
                           quoteController.clear();
                           authorController.clear();
 
-                          int id = await dbQuoteController.insertQuote(
+                          int id = await dbQuoteController.insertQuotes(
                               quoteModal: quoteModal);
 
                           Get.snackbar("Successfully Transaction Added !!",

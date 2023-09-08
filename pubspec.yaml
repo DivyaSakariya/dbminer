@@ -44,8 +44,7 @@ dependencies:
   sqflite: any
   path: any
   share_plus: any
-  swipeable_cards_stack: any
-#  easy_search_bar: ^2.5.0
+  animated_splash_screen: any
 
 dev_dependencies:
   flutter_test:

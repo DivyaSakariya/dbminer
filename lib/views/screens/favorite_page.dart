@@ -91,10 +91,8 @@ class FavoritePage extends StatelessWidget {
                                   Get.snackbar(
                                       'Quote Deleted', '${quoteModal.quote}');
                                 },
-                                icon: Icon(
-                                  jsonDataController.isFavorite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
+                                icon: const Icon(
+                                  Icons.favorite,
                                   color: Colors.white,
                                 ),
                               ),
@@ -108,6 +106,8 @@ class FavoritePage extends StatelessWidget {
                               IconButton(
                                 onPressed: () {
                                   jsonDataController.delete(index: index);
+                                  Get.snackbar(
+                                      'Quote Deleted', '${quoteModal.quote}');
                                 },
                                 icon: const Icon(
                                   Icons.delete,

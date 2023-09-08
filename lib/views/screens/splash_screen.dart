@@ -1,42 +1,54 @@
 import 'dart:async';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pr_7_db_miner/views/screens/home_page.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/');
-    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xffffffff),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("MyQu",
+        body: AnimatedSplashScreen(
+          splash: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "MyQu",
                   style: GoogleFonts.aBeeZee(
-                      color: Color(0xff09203F), fontSize: 30, letterSpacing: 1)),
-              const SizedBox(
-                width: 2,
-              ),
-              const Icon(
-                Icons.all_inclusive,
-                size: 50,
-                color: Color(0xff09203F),
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Text("tes",
+                      color: const Color(0xff09203F),
+                      fontSize: 30,
+                      letterSpacing: 1),
+                ),
+                const SizedBox(
+                  width: 2,
+                ),
+                const Icon(
+                  Icons.all_inclusive,
+                  size: 50,
+                  color: Color(0xff09203F),
+                ),
+                const SizedBox(
+                  width: 2,
+                ),
+                Text(
+                  "tes",
                   style: GoogleFonts.aBeeZee(
-                      color: Color(0xff09203F), fontSize: 30, letterSpacing: 1)),
-            ],
+                    color: const Color(0xff09203F),
+                    fontSize: 30,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ],
+            ),
           ),
+          nextScreen: HomePage(),
+          splashTransition: SplashTransition.fadeTransition,
         ),
       ),
     );

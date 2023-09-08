@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pr_7_db_miner/controllers/db_quote_controller.dart';
 import 'package:pr_7_db_miner/views/screens/add_quotes_page.dart';
 import 'package:pr_7_db_miner/views/screens/favorite_page.dart';
 import 'package:pr_7_db_miner/views/screens/home_page.dart';
@@ -34,25 +35,28 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      initialRoute: '/splash_screen',
       getPages: [
         GetPage(
           name: '/',
+          page: () => const SplashScreen(),
+        ),
+        GetPage(
+          name: '/home',
           page: () => HomePage(),
           transition: Transition.rightToLeft,
           curve: Curves.easeInOut,
         ),
         GetPage(
-          name: '/splash_screen',
-          page: () => const SplashScreen(),
-        ),
-        GetPage(
           name: '/favorite_page',
           page: () => FavoritePage(),
+          transition: Transition.upToDown,
+          curve: Curves.easeInOut,
         ),
         GetPage(
           name: '/add_quotes_page',
           page: () => AddQuotesPage(),
+          transition: Transition.downToUp,
+          curve: Curves.easeInOut,
         ),
       ],
     );

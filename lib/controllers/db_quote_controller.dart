@@ -14,7 +14,7 @@ class DBQuoteController extends GetxController {
     return _allQuotes;
   }
 
-  Future<int> insertQuote({required QuoteModal quoteModal}) {
+  Future<int> insertQuotes({required QuoteModal quoteModal}) {
     return DBHelper.dbHelper.insertQuote(quoteModal: quoteModal);
   }
 
@@ -22,6 +22,7 @@ class DBQuoteController extends GetxController {
     getAllQuotes();
 
     if (_allQuotes.any((element) => element.id == id)) {
+      Get.snackbar("Quote Deleted !!", "$id does not exist...");
       return await DBHelper.dbHelper.deleteQuote(id: id);
     } else {
       Get.snackbar("ERROR !!", "$id does not exist...");

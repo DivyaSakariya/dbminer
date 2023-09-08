@@ -1,11 +1,12 @@
 import 'dart:developer';
 
 class QuoteModal {
-  late int id;
+  int? id;
   String? quote;
   String? author;
 
   QuoteModal(
+    this.id,
     this.quote,
     this.author,
   );
@@ -16,6 +17,7 @@ class QuoteModal {
 
   factory QuoteModal.fromMap({required Map data}) {
     return QuoteModal(
+      data['id'],
       data['quote'],
       data['author'],
     );

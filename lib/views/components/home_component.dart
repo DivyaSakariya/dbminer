@@ -14,7 +14,7 @@ class HomeComponent extends StatelessWidget {
   HomeComponent({super.key});
 
   DBQuoteController dbQuoteController = Get.put(DBQuoteController());
-  JsonDataController jsonDataController = Get.put(JsonDataController());
+  JsonDataController jsonDataController = Get.find<JsonDataController>();
 
   @override
   Widget build(BuildContext context) {
@@ -88,12 +88,8 @@ class HomeComponent extends StatelessWidget {
                               Get.snackbar(
                                   'Successfully Added', '${quoteModal.quote}');
                             },
-                            icon: Icon(
-                              jsonDataController.isFavorite
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Colors.white,
-                            ),
+                            icon: const Icon(Icons.favorite_border,
+                            color: Colors.white,),
                           ),
                           IconButton(
                             onPressed: () {},

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pr_7_db_miner/controllers/json_data_controller.dart';
 import 'package:pr_7_db_miner/views/components/library_component.dart';
 
 import '../../controllers/home_controller.dart';
@@ -15,6 +16,7 @@ class HomePage extends StatelessWidget {
 
   HomeController homeController = Get.put(HomeController());
   QuotesController quotesController = Get.put(QuotesController());
+  JsonDataController jsonDataController = Get.find<JsonDataController>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,7 @@ class HomePage extends StatelessWidget {
         children: [
           HomeComponent(),
           QuotesComponent(),
-          SearchComponent(),
+          // SearchComponent(),
           LibraryComponent(),
         ],
       ),
@@ -92,10 +94,10 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.layers_outlined),
               label: 'Quotes',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.search),
+            //   label: 'Search',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.library_books_outlined),
               label: 'Library',

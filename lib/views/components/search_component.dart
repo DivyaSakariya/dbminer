@@ -25,7 +25,7 @@ class SearchComponent extends StatelessWidget {
         children: [
           TextField(
             onChanged: (val) {
-              jsonDataController.search(query: val);
+              jsonDataController.search(value: val);
             },
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
@@ -36,10 +36,10 @@ class SearchComponent extends StatelessWidget {
           Expanded(
             child: jsonDataController.allQuotesData.isNotEmpty
                 ? ListView.builder(
-                    itemCount: jsonDataController.allQuotesData.length,
+                    itemCount: jsonDataController.searchQuotes.length,
                     itemBuilder: (context, index) {
                       QuoteModal quoteModal =
-                          jsonDataController.allQuotesData[index];
+                          jsonDataController.searchQuotes[index];
                       Color c1 = color1[index % 10];
                       Color c2 = color2[index % 10];
 
@@ -101,10 +101,8 @@ class SearchComponent extends StatelessWidget {
                                     Get.snackbar('Successfully Added',
                                         '${quoteModal.quote}');
                                   },
-                                  icon: Icon(
-                                    jsonDataController.isFavorite
-                                        ? Icons.favorite
-                                        : Icons.favorite_border,
+                                  icon: const Icon(
+                                    Icons.favorite_border,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -149,120 +147,3 @@ class SearchComponent extends StatelessWidget {
     );
   }
 }
-
-
-// import 'package:flutter/material.dart';
-//
-// class SearchComponent extends StatefulWidget {
-//   const SearchComponent({Key? key}) : super(key: key);
-//
-//   @override
-//   State<SearchComponent> createState() => _SearchComponentState();
-// }
-//
-// class _SearchComponentState extends State<SearchComponent> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text(
-//           "GeeksForGeeks",
-//         ),
-//         actions: [
-//           IconButton(
-//             onPressed: () {
-//               // method to show the search bar
-//               showSearch(
-//                   context: context,
-//                   // delegate to customize the search bar
-//                   delegate: CustomSearchDelegate()
-//               );
-//             },
-//             icon: const Icon(Icons.search),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
-//
-//
-// class CustomSearchDelegate extends SearchDelegate {
-//   // Demo list to show querying
-//   List<String> searchTerms = [
-//     "Apple",
-//     "Banana",
-//     "Mango",
-//     "Pear",
-//     "Watermelons",
-//     "Blueberries",
-//     "Pineapples",
-//     "Strawberries"
-//   ];
-//
-//   // first overwrite to
-//   // clear the search text
-//   @override
-//   List<Widget>? buildActions(BuildContext context) {
-//     return [
-//       IconButton(
-//         onPressed: () {
-//           query = '';
-//         },
-//         icon: Icon(Icons.clear),
-//       ),
-//     ];
-//   }
-//
-//   // second overwrite to pop out of search menu
-//   @override
-//   Widget? buildLeading(BuildContext context) {
-//     return IconButton(
-//       onPressed: () {
-//         close(context, null);
-//       },
-//       icon: Icon(Icons.arrow_back),
-//     );
-//   }
-//
-//   // third overwrite to show query result
-//   @override
-//   Widget buildResults(BuildContext context) {
-//     List<String> matchQuery = [];
-//     for (var fruit in searchTerms) {
-//       if (fruit.toLowerCase().contains(query.toLowerCase())) {
-//         matchQuery.add(fruit);
-//       }
-//     }
-//     return ListView.builder(
-//       itemCount: matchQuery.length,
-//       itemBuilder: (context, index) {
-//         var result = matchQuery[index];
-//         return ListTile(
-//           title: Text(result),
-//         );
-//       },
-//     );
-//   }
-//
-//   // last overwrite to show the
-//   // querying process at the runtime
-//   @override
-//   Widget buildSuggestions(BuildContext context) {
-//     List<String> matchQuery = [];
-//     for (var fruit in searchTerms) {
-//       if (fruit.toLowerCase().contains(query.toLowerCase())) {
-//         matchQuery.add(fruit);
-//       }
-//     }
-//     return ListView.builder(
-//       itemCount: matchQuery.length,
-//       itemBuilder: (context, index) {
-//         var result = matchQuery[index];
-//         return ListTile(
-//           title: Text(result),
-//         );
-//       },
-//     );
-//   }
-// }
