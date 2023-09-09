@@ -7,7 +7,6 @@ import 'package:pr_7_db_miner/views/components/library_component.dart';
 import '../../controllers/home_controller.dart';
 import '../../controllers/quotes_controller.dart';
 import '../components/home_component.dart';
-import '../components/menu_component.dart';
 import '../components/quotes_component.dart';
 import '../components/search_component.dart';
 
@@ -68,7 +67,7 @@ class HomePage extends StatelessWidget {
         children: [
           HomeComponent(),
           QuotesComponent(),
-          // SearchComponent(),
+          SearchComponent(),
           LibraryComponent(),
         ],
       ),
@@ -94,10 +93,10 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.layers_outlined),
               label: 'Quotes',
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.search),
-            //   label: 'Search',
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.library_books_outlined),
               label: 'Library',

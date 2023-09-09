@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
-import 'package:pr_7_db_miner/controllers/quotes_controller.dart';
-import 'package:pr_7_db_miner/helpers/db_helper.dart';
 
 import '../modals/quote_modal.dart';
 
@@ -13,9 +11,11 @@ class JsonDataController extends GetxController {
   List allQuotesData = [];
   List quotesList = [];
   RxList allFavorite = [].obs;
-  RxList searchQuotes = [].obs;
+  RxList allSearchQuotes = [].obs;
   RxString searchValue = ''.obs;
   RxBool isFavorite = false.obs;
+
+  TextEditingController searchController = TextEditingController();
 
   QuoteModal quoteModal = QuoteModal.init();
 
@@ -23,6 +23,7 @@ class JsonDataController extends GetxController {
     String jsonData = await rootBundle.loadString('assets/json/quotes.json');
     List allData = json.decode(jsonData);
     allQuotesData = allData.map((e) => QuoteModal.fromMap(data: e)).toList();
+    allSearchQuotes(allData.map((e) => QuoteModal.fromMap(data: e)).toList());
   }
 
   checkFavorite() {
@@ -38,16 +39,25 @@ class JsonDataController extends GetxController {
   }
 
   search({required String value}) {
-    final item = allQuotesData.firstWhere((e) => e['quote'] == value);
-    log(item['quote']);
-    // searchValue(value);
-    //
-    // for (int i = 0; i <= allQuotesData.length; i++) {
-    //   if (searchValue == allQuotesData[i]) {
-    //     return searchQuotes = allQuotesData[i];
-    //   } else {
-    //     return 'No result found';
-    //   }
-    // }
+    log("$allSearchQuotes");
+
+    if(allSearchQuotes.isEmpty) {
+      allSearchQuotes(allQuotesData);
+    }
+
+    value = value.toLowerCase();
+    log(value);
+
+    List result = [];
+
+    for (var e in allSearchQuotes) {
+      var sQuote = e['quote'].toString().toLowerCase();
+      if(sQuote.contains(value)) {
+        result.add(e);
+      }
+    }
+
+    allSearchQuotes(result);
   }
 }
+
